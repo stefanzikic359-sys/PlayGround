@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><meta name="theme-color" content="#101510">
+<title>LAST LIGHT — Survival Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700;800&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="game-shell">
+  <header class="topbar"><a class="brand" href="#" aria-label="Last Light home"><span class="brand-mark">L<span>·</span>L</span><span class="brand-name">LAST<span>LIGHT</span></span></a><div class="top-meta"><span class="live-dot"></span><span id="statusText">FIELD JOURNAL // DAY 01</span></div><button id="soundBtn" class="icon-btn" title="Toggle sound" aria-label="Toggle sound">◖))</button></header>
+  <section class="game-layout">
+    <aside class="left-panel panel">
+      <div class="panel-kicker">SURVIVOR STATUS <span class="tiny-cross">✚</span></div>
+      <div class="profile"><div class="avatar"><span>R</span><i></i></div><div><div class="survivor-name">RILEY MORGAN</div><div class="survivor-sub">CIVILIAN · AGE 29</div></div></div>
+      <div class="divider"></div><div class="section-label">CONDITION <span id="conditionText">STABLE</span></div>
+      <div class="stat-row"><span class="stat-icon health-icon">♥</span><div class="stat-info"><div class="stat-label">HEALTH <span id="healthNum">100</span></div><div class="bar"><i id="healthBar" class="health-fill"></i></div></div></div>
+      <div class="stat-row"><span class="stat-icon stamina-icon">ϟ</span><div class="stat-info"><div class="stat-label">STAMINA <span id="staminaNum">100</span></div><div class="bar"><i id="staminaBar" class="stamina-fill"></i></div></div></div>
+      <div class="stat-row"><span class="stat-icon hunger-icon">◒</span><div class="stat-info"><div class="stat-label">HUNGER <span id="hungerNum">100</span></div><div class="bar"><i id="hungerBar" class="hunger-fill"></i></div></div></div>
+      <div class="stat-row"><span class="stat-icon thirst-icon">◆</span><div class="stat-info"><div class="stat-label">HYDRATION <span id="thirstNum">100</span></div><div class="bar"><i id="thirstBar" class="thirst-fill"></i></div></div></div>
+      <div class="divider"></div><div class="section-label">IN YOUR PACK <span class="pack-count" id="packCount">3 / 8</span></div>
+      <div class="inventory" id="inventory"></div>
+      <div class="tip-card"><span class="tip-icon">⌁</span><div><b>FIELD TIP</b><p id="fieldTip">A quiet approach keeps the dead asleep.</p></div></div>
+      <button class="restart-link" id="restartBtn">↻ &nbsp; RESTART DAY</button>
+    </aside>
+    <section class="center-column">
+      <div class="scene-head"><div><div class="eyebrow"><span class="eyebrow-line"></span>RAVEN CREEK, KENTUCKY</div><h1>THE LONG <em>AFTER</em></h1><p class="scene-sub">Day 1 of the quiet. Find supplies. Stay breathing.</p></div><div class="clock-card"><span class="clock-label">LOCAL TIME</span><strong id="clock">07:30</strong><span class="weather"><i>☁</i> OVERCAST <b>·</b> 14°C</span></div></div>
+      <div class="canvas-wrap"><canvas id="gameCanvas" aria-label="Top-down survival game. Move with WASD or arrow keys, fight with Space and scavenge with E."></canvas><div class="canvas-vignette"></div><div class="map-coords" id="coords">SECTOR 04 · 12</div><div class="noise-tag"><span></span> LIVE FEED</div><div class="interaction-prompt" id="prompt"></div><div class="toast" id="toast"></div><div class="start-overlay" id="startOverlay"><div class="start-card"><div class="start-icon">☀</div><div class="start-kicker">THE WORLD ENDED THREE WEEKS AGO</div><h2>MAKE IT<br><em>TO TOMORROW.</em></h2><p>Scavenge the abandoned streets. Keep your strength. The dead are listening.</p><button id="startBtn" class="primary-btn">ENTER RAVEN CREEK <span>→</span></button><div class="start-controls">WASD <span>MOVE</span> &nbsp;·&nbsp; SPACE <span>SWING</span> &nbsp;·&nbsp; E <span>SCAVENGE</span></div></div></div><div class="game-over" id="gameOver"><div class="start-card"><div class="start-kicker">END OF TRANSMISSION</div><h2>THE LIGHT<br><em>WENT OUT.</em></h2><p id="deathMessage">Raven Creek will remember you.</p><button id="retryBtn" class="primary-btn">TRY AGAIN <span>↻</span></button></div></div></div>
+      <div class="game-footer"><div class="control-hints"><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> MOVE</span><span><kbd>SPACE</kbd> SWING</span><span><kbd>E</kbd> SCAVENGE</span><span><kbd>SHIFT</kbd> SPRINT</span></div><div class="threat-indicator"><span class="threat-pip"></span><span id="threatText">NO THREATS NEARBY</span></div></div>
+      <div class="mobile-controls"><div class="dpad"><button data-move="up">▲</button><div><button data-move="left">◀</button><button data-move="down">▼</button><button data-move="right">▶</button></div></div><div class="mobile-actions"><button id="mobileAttack" class="action-touch">✦<span>SWING</span></button><button id="mobileLoot" class="action-touch">⌕<span>LOOT</span></button><button id="mobileUse" class="action-touch">＋<span>USE</span></button><button id="mobileSprint" class="action-touch">ϟ<span>RUN</span></button></div></div>
+    </section>
+    <aside class="right-panel panel"><div class="panel-kicker">TODAY'S OBJECTIVE <span class="objective-mark">◎</span></div><div class="objective-card"><div class="objective-icon">⌖</div><div class="objective-title">MAKE IT THROUGH<br>THE DAY</div><p>Explore Raven Creek and gather what you can. Every hour brings the dark closer.</p><div class="objective-progress"><span id="objectiveLabel">SURVIVE UNTIL DUSK</span><span id="objectivePct">0%</span></div><div class="bar objective-bar"><i id="objectiveBar"></i></div></div>
+      <div class="divider"></div><div class="section-label">DAY <span id="dayNum">01</span><span class="section-spacer"></span><span id="dayPhase">MORNING</span></div><div class="day-track"><div class="day-sun">☼</div><div class="day-line"><i id="dayProgress"></i></div><div class="day-moon">☾</div></div><div class="day-times"><span>06:00</span><span>12:00</span><span>18:00</span><span>00:00</span></div>
+      <div class="divider"></div><div class="section-label">RECENT ACTIVITY <span class="activity-live"><i></i> LIVE</span></div><div class="event-log" id="eventLog"></div>
+      <div class="map-card"><div class="map-title">AREA MAP <span>RAVEN CREEK</span></div><canvas id="miniMap" width="180" height="115"></canvas><div class="map-legend"><span><i class="legend-you"></i> YOU</span><span><i class="legend-dead"></i> INFECTED</span></div></div>
+    </aside>
+  </section>
+  <footer class="bottom-bar"><span>▣ &nbsp; SURVIVAL IS A DAILY PRACTICE</span><span>NO ONE IS COMING <b>·</b> KEEP MOVING</span><span>BUILD 0.3.21 <i>●</i></span></footer>
+</main><script src="game.js"></script>
+</body></html>
