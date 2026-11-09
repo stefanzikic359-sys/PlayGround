@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#070a12" />
+  <title>ASHES OF THE ARENA — A Cosmic Gladiator Chronicle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="world" aria-label="3D Galactic Arena combat scene"></canvas>
+    <div class="vignette"></div>
+    <div class="scanlines"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Ashes of the Arena home"><span class="brand-mark">✦</span><span>ASHES <i>OF THE</i> ARENA</span></a>
+      <div class="chapter"><span class="live-dot"></span><span>CHAPTER 01</span><b>THE HOLLOW CROWN</b></div>
+      <button class="icon-btn" id="sound-btn" title="Toggle sound" aria-label="Toggle sound">♫</button>
+    </header>
+    <section class="mission-card">
+      <div class="eyebrow"><span class="tiny-rule"></span> THE LAST TRANSMISSION <span class="tiny-rule"></span></div>
+      <h1>THE <em>HOLLOW</em><br/>CROWN</h1>
+      <p class="story">The arenas were built to make the galaxy forget its wars. Your sister was taken to make them unforgettable.</p>
+      <div class="story-foot"><span class="seal">✦</span><span>“Win your freedom, and I will open the vault.”<br/><strong>— THE CROWN, broadcast to every moon</strong></span></div>
+      <div class="mission-meta"><span><small>LOCATION</small> NEMESIS IX</span><span><small>OBJECTIVE</small> CLAIM THE SIGIL</span></div>
+    </section>
+    <section class="combat-ui">
+      <div class="fighter player-card">
+        <div class="portrait portrait-player"><span>V</span><i class="portrait-scan"></i></div>
+        <div class="fighter-data"><div class="fighter-name">VEX <small>THE UNBOUND</small></div><div class="meter-label"><span>VITALITY</span><b id="player-hp-text">100</b></div><div class="meter"><i id="player-hp"></i></div><div class="meter-label stamina-label"><span>STAMINA</span><b id="stamina-text">100</b></div><div class="meter stamina"><i id="stamina-bar"></i></div></div>
+      </div>
+      <div class="round-mark"><span>ROUND</span><b id="round-number">01</b><i></i><small>FIRST BLOOD</small></div>
+      <div class="fighter enemy-card"><div class="fighter-data"><div class="fighter-name">KORVAX <small>THE GATEKEEPER</small></div><div class="meter-label"><span>VITALITY</span><b id="enemy-hp-text">100</b></div><div class="meter enemy-meter"><i id="enemy-hp"></i></div><div class="meter-label"><span>ARMOR INTEGRITY</span><b id="armor-text">78</b></div><div class="meter armor-meter"><i id="armor-bar"></i></div></div><div class="portrait portrait-enemy"><span>K</span><i class="portrait-scan"></i></div></div>
+    </section>
+    <div class="arena-label"><span class="location-icon">⌖</span><span>NEMESIS IX</span><i>—</i><span>THE SUNKEN COLISEUM</span><b>● LIVE FEED</b></div>
+    <div class="combat-log" id="combat-log"><span class="log-icon">✦</span><span id="log-text">THE GATEKEEPER ENTERS. Make the first move.</span></div>
+    <div class="loot-toast" id="loot-toast"><span>✦</span><div><b>LOOT RECOVERED</b><small id="loot-name">Voidglass Shard</small></div></div>
+    <footer class="bottom-ui">
+      <div class="left-controls"><span class="control-tip"><kbd>W A S D</kbd> MOVE</span><span class="control-tip"><kbd>SPACE</kbd> JUMP</span><span class="control-tip"><kbd>SHIFT</kbd> DODGE</span></div>
+      <div class="action-bar">
+        <button class="action attack" id="attack-btn"><span class="action-key">J</span><span class="action-symbol">⚔</span><span class="action-label">STRIKE</span><i class="cooldown"></i></button>
+        <button class="action heavy" id="heavy-btn"><span class="action-key">K</span><span class="action-symbol">⟊</span><span class="action-label">HEAVY</span><i class="cooldown"></i></button>
+        <button class="action guard" id="guard-btn"><span class="action-key">L</span><span class="action-symbol">◈</span><span class="action-label">GUARD</span><i class="cooldown"></i></button>
+      </div>
+      <div class="right-controls"><button class="utility-btn" id="inventory-btn"><span>▤</span><b>INVENTORY</b><kbd>I</kbd></button><button class="utility-btn" id="pause-btn"><span>Ⅱ</span><b>PAUSE</b><kbd>ESC</kbd></button></div>
+    </footer>
+    <div class="target-reticle"><span></span></div>
+    <div class="boss-warning" id="boss-warning"><span>⚠</span> THE GATEKEEPER IS WINDING UP <span>⚠</span></div>
+    <div class="overlay intro-overlay" id="intro-overlay"><div class="intro-backdrop"></div><div class="intro-content"><div class="intro-kicker">A CHRONICLE OF THE OUTER RIM</div><div class="intro-emblem">✦</div><div class="intro-title">ASHES <span>OF THE</span><br/><em>ARENA</em></div><p>THE GALAXY HAS A NEW GOD.<br/>YOU ARE HERE TO MAKE IT BLEED.</p><div class="intro-divider"><i></i> NEMESIS IX <i></i></div><button class="primary-btn" id="begin-btn">ENTER THE ARENA <span>→</span></button><div class="intro-note">BEST EXPERIENCED WITH SOUND ON</div></div></div>
+    <div class="overlay end-overlay hidden" id="end-overlay"><div class="intro-backdrop"></div><div class="end-content"><div class="eyebrow">BOUT COMPLETE</div><h2 id="end-title">THE SIGIL IS YOURS.</h2><p id="end-copy">One arena down. The Crown has noticed you.</p><button class="primary-btn" id="next-bout">FIGHT AGAIN <span>→</span></button></div></div>
+    <div class="modal-wrap hidden" id="inventory-modal"><div class="modal inventory-panel"><button class="close-btn" data-close="inventory-modal">×</button><div class="modal-kicker">VEX // FIELD KIT</div><h2>ARMORY <span>&</span> RELICS</h2><div class="inventory-layout"><div class="gear-column"><div class="equipment-heading">EQUIPPED LOADOUT <span>MARK I</span></div><div class="gear-slot selected" data-item="Cinderfang"><div class="gear-icon weapon-icon">⚔</div><div><b>EMBER-CUTTER</b><small>PLASMA SABER · RARE</small></div><span class="gear-stat">+18 DMG</span></div><div class="gear-slot" data-item="Aegis Visor"><div class="gear-icon helmet-icon">⬡</div><div><b>AEGIS VISOR</b><small>HEAD ARMOR · UNCOMMON</small></div><span class="gear-stat">+12 ARM</span></div><div class="gear-slot" data-item="Drifter Carapace"><div class="gear-icon body-icon">◈</div><div><b>DRIFTER CARAPACE</b><small>CHEST ARMOR · COMMON</small><span class="gear-damage"></span></div><span class="gear-stat">+20 ARM</span></div><div class="gear-slot" data-item="Gravstep Greaves"><div class="gear-icon boot-icon">◡</div><div><b>GRAVSTEP GREAVES</b><small>BOOTS · UNCOMMON</small></div><span class="gear-stat">+8 SPD</span></div><div class="gear-slot" data-item="Pitfighter Wraps"><div class="gear-icon glove-icon">✣</div><div><b>PITFIGHTER WRAPS</b><small>GLOVES · COMMON</small></div><span class="gear-stat">+6 DMG</span></div></div><div class="pack-column"><div class="equipment-heading">RECOVERED <span id="loot-count">03 ITEMS</span></div><div class="relic-card"><div class="relic-art">✧</div><div class="relic-tag">ARENA RELIC · RARE</div><b>VOIDGLASS SHARD</b><p>A fragment of the Crown's first arena gate. It hums when you speak your sister's name.</p><div class="relic-footer"><span>QUEST ITEM</span><span>× 1</span></div></div><div class="inventory-stats"><span>SCRAP <b id="scrap-count">120</b></span><span>RELICS <b id="relic-count">01</b></span></div><div class="selected-note" id="selected-note">EMBER-CUTTER · A scavenged plasma blade tuned to Vex's pulse.</div></div></div><div class="modal-footer"><span>ITEMS CHANGE HOW YOU FIGHT.</span><button class="text-btn" data-close="inventory-modal">BACK TO THE ARENA <span>↗</span></button></div></div></div>
+    <div class="modal-wrap hidden" id="pause-modal"><div class="modal pause-panel"><button class="close-btn" data-close="pause-modal">×</button><div class="modal-kicker">NEMESIS IX // FEED PAUSED</div><h2>TAKE A BREATH.</h2><p>The crowd is still waiting.</p><div class="pause-actions"><button class="primary-btn" id="resume-btn">RESUME FIGHT <span>→</span></button><button class="text-btn" id="pause-inventory">OPEN INVENTORY <span>↗</span></button></div><div class="pause-controls">WASD MOVE <i>·</i> SPACE JUMP <i>·</i> SHIFT DODGE <i>·</i> J STRIKE <i>·</i> K HEAVY <i>·</i> L GUARD</div></div></div>
+    <div class="touch-controls" aria-label="Touch combat controls"><div class="move-pad"><button data-move="up" aria-label="Move forward">▲</button><div><button data-move="left" aria-label="Move left">◀</button><button data-move="down" aria-label="Move backward">▼</button><button data-move="right" aria-label="Move right">▶</button></div></div><div class="touch-actions"><button data-action="guard" aria-label="Guard">◈</button><button data-action="jump" aria-label="Jump">↑</button><button data-action="attack" aria-label="Strike">⚔</button><button data-action="heavy" aria-label="Heavy attack">⟊</button><button data-action="dodge" aria-label="Dodge">↗</button></div></div>
+    <div class="damage-flash" id="damage-flash"></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
